@@ -1,0 +1,154 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aws-analyzer"
+version = "0.1.0"
+description = "Cloud IAM Attack Path Analyzer for AWS - Identify privilege escalation paths and risky IAM configurations"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Your Name", email = "your.email@example.com" }
+]
+keywords = [
+    "aws",
+    "iam",
+    "security",
+    "privilege-escalation",
+    "attack-path",
+    "cloud-security",
+    "findings",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: System :: Monitoring",
+    "Topic :: Security",
+]
+
+dependencies = [
+    "pydantic>=2.0.0,<3.0.0",
+    "typer>=0.9.0,<1.0.0",
+    "rich>=13.0.0,<14.0.0",
+    "networkx>=3.0,<4.0",
+    "jinja2>=3.1.0,<4.0.0",
+    "pyvis>=0.3.0,<1.0.0",
+    "python-dateutil>=2.8.2,<3.0.0",
+    "pandas>=2.0.0,<3.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=23.0.0,<24.0.0",
+    "flake8>=6.0.0,<7.0.0",
+    "mypy>=1.5.0,<2.0.0",
+    "isort>=5.12.0,<6.0.0",
+    "pytest>=7.4.0,<8.0.0",
+    "pytest-cov>=4.1.0,<5.0.0",
+    "pytest-asyncio>=0.21.0,<1.0.0",
+    "ipython>=8.0.0,<9.0.0",
+    "jupyter>=1.0.0,<2.0.0",
+]
+
+aws = [
+    "boto3>=1.28.0,<2.0.0",
+]
+
+dashboard = [
+    "streamlit>=1.28.0,<2.0.0",
+]
+
+[project.scripts]
+aws-analyzer = "analyzer.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/aws-analyzer"
+Repository = "https://github.com/yourusername/aws-analyzer.git"
+Issues = "https://github.com/yourusername/aws-analyzer/issues"
+
+[tool.setuptools]
+packages = ["analyzer"]
+
+[tool.black]
+line-length = 100
+target-version = ['py39', 'py310', 'py311', 'py312']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = true
+warn_no_return = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+plugins = ["pydantic.mypy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short --strict-markers"
+markers = [
+    "integration: marks tests as integration tests (deselect with '-m \"not integration\"')",
+    "unit: marks tests as unit tests",
+]
+
+[tool.coverage.run]
+source = ["analyzer"]
+branch = true
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+
+[tool.isort]
+profile = "black"
+multi_line_mode = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 100
