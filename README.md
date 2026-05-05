@@ -1,12 +1,14 @@
 # Cloud IAM Attack Path Analyzer for AWS
 
-A Python-based AWS security tool that analyzes IAM identities, policies, trust relationships, access keys, and CloudTrail activity to identify privilege escalation paths, over-permissioned roles, stale credentials, unused access, and risky service-account behavior.
+[![Contributions](https://img.shields.io/badge/contributions-welcome-orange.svg)](CONTRIBUTING.md) [![Security](https://img.shields.io/badge/security-policy-blue.svg)](SECURITY.md)
+
+Cloud IAM Attack Path Analyzer is an offline AWS security tool for reviewing exported IAM data, trust relationships, access keys, and CloudTrail activity. It identifies over-permissioned identities, privilege escalation paths, stale credentials, unused access, and risky service-account behavior.
 
 ## Overview
 
-This project is a **defensive cloud security tool** designed to help security teams identify risky IAM configurations and potential privilege escalation paths in AWS environments.
+This project is a defensive cloud security tool for identifying risky IAM configurations and potential privilege escalation paths in AWS environments.
 
-It analyzes IAM users, roles, groups, policies, trust relationships, credential reports, and CloudTrail events to produce **prioritized findings with attack-path context and remediation guidance**.
+It analyzes IAM users, roles, groups, policies, trust relationships, credential reports, and CloudTrail events to produce prioritized findings with attack-path context and remediation guidance.
 
 ## Key Capabilities
 
@@ -40,28 +42,26 @@ This project **complements** native AWS IAM analysis (IAM Access Analyzer, unuse
 ## Project Phases
 
 ### Phase 1: Offline Analyzer (MVP) - Current
-- ✅ Standalone CLI tool for analyzing exported AWS IAM data
-- ✅ No AWS credentials required
-- ✅ Output: JSON findings, Markdown reports, HTML attack graphs
-- ✅ Detections: Over-permissioned identities, trust policy risks, stale keys, privilege escalation paths
+- Standalone CLI for exported AWS IAM data
+- No AWS credentials required
+- Outputs JSON, Markdown, and HTML reports
+- Covers over-permissioned identities, trust policy risks, stale keys, and privilege escalation paths
 
 ### Phase 2: Scheduled Analysis (Planned)
-- AWS SDK integration for automated data collection
-- Scheduled analysis runs
-- Historical findings storage and trends
-- Alert integrations (Slack, email)
+- AWS SDK integration for automated collection
+- Scheduled scans and historical trends
+- Alert integrations for Slack and email
 
 ### Phase 3: Interactive Dashboard (Planned)
-- Streamlit web interface
+- Streamlit dashboard
 - Real-time graph visualization
-- Custom filter and search
-- Remediation workflow tracking
+- Filtering, search, and remediation tracking
 
 ### Phase 4: Enterprise Features (Planned)
 - Multi-account analysis
-- Custom detection rule engine
+- Custom detection rules
 - RBAC for team collaboration
-- API for third-party integrations
+- API integrations
 
 ---
 
@@ -363,12 +363,12 @@ pytest
 
 ## Roadmap
 
-- [ ] **Phase 1.1**: Core detections and offline analysis
-- [ ] **Phase 1.2**: HTML/interactive graph reports
-- [ ] **Phase 2**: AWS SDK integration for automated collection
-- [ ] **Phase 2.1**: Scheduled scanning and historical trends
-- [ ] **Phase 3**: Streamlit dashboard and real-time monitoring
-- [ ] **Phase 4**: Enterprise features (multi-account, custom rules, API)
+- Phase 1.1: Core detections and offline analysis
+- Phase 1.2: HTML and interactive graph reports
+- Phase 2: AWS SDK integration for automated collection
+- Phase 2.1: Scheduled scanning and historical trends
+- Phase 3: Streamlit dashboard and real-time monitoring
+- Phase 4: Enterprise features, including multi-account support, custom rules, and API access
 
 ---
 

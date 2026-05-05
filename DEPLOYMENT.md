@@ -1,5 +1,7 @@
 # DEPLOYMENT.md - Deployment & Usage Guide
 
+[![Contributions](https://img.shields.io/badge/contributions-welcome-orange.svg)](CONTRIBUTING.md)
+
 ## Quick Start (5 minutes)
 
 ### 1. Install
@@ -12,23 +14,23 @@ pip install -e .
 
 ### 2. Prepare Data
 
-Export your AWS IAM configuration and CloudTrail logs:
+Export AWS IAM configuration and CloudTrail logs:
 
 ```bash
-# Option A: Use automated export (requires AWS credentials)
+# Option A: Automated export (requires AWS credentials)
 python tools/export_iam_data.py --region us-east-1 --output-dir data/exports/
 
 # Option B: Manual export via AWS Console
-# Download and place files in: data/my-exports/
+# Place the downloaded files in: data/my-exports/
 ```
 
 ### 3. Run Analysis
 
 ```bash
-# Analyze exported data
+# Run analysis
 python -m analyzer scan --input-dir data/exports --output-dir reports/
 
-# Check reports
+# View the report
 cat reports/findings.md
 ```
 
@@ -36,7 +38,7 @@ cat reports/findings.md
 
 ## Installation Options
 
-### Option 1: Development Install (Recommended)
+### Option 1: Development Install
 
 ```bash
 git clone https://github.com/yourusername/aws-analyzer.git
@@ -46,7 +48,7 @@ cd aws-analyzer
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
-# Install with dev dependencies
+# Install development dependencies
 pip install -e ".[dev]"
 
 # Run tests
